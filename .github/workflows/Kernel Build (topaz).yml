@@ -84,13 +84,13 @@ jobs:
       working-directory: ${{ steps.workspace.outputs.workspace-folder }}
       id: kernel
 
-    - name: Building kernel
+    - name: Building kernel (RKSU)
       run: |
-        rm -rf KernelSU-Next
-        curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next-susfs/kernel/setup.sh" | bash -s next-susfs
+        rm -rf Rissu-KernelSU
+        curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
         export ARCH=arm64
         export SUBARCH=ARM64
-        export KBUILD_BUILD_USER="aliza"
+        export KBUILD_BUILD_USER="NVG-064"
         export KBUILD_BUILD_HOST="Github"
         make O=out vendor/munch_defconfig PATH="${{ steps.tools.outputs.tools-folder }}/clang/bin:$PATH"
         make O=out CC=clang -j$(nproc --all) PATH="${{ steps.tools.outputs.tools-folder }}/clang/bin:$PATH" CROSS_COMPILE=aarch64-linux-gnu- LLVM=1 LLVM_IAS=1
