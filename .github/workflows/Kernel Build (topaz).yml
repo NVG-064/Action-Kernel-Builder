@@ -69,6 +69,7 @@ jobs:
 
     - name: Prepare the build environment
       run: |
+        sudo apt-get install -y libelf-dev
         sudo apt install flex && sudo apt install libncurses6
         wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r547379.tar.gz -O clang.tar.gz
         mkdir clang
@@ -87,7 +88,7 @@ jobs:
     - name: Building kernel (RKSU)
       run: |
         rm -rf Rissu-KernelSU
-        curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
+        curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s susfs-v1.5.5
         export ARCH=arm64
         export SUBARCH=ARM64
         export KBUILD_BUILD_USER="NVG-064"
