@@ -88,7 +88,7 @@ jobs:
     - name: Building kernel (RKSU)
       run: |
         rm -rf Rissu-KernelSU
-        curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s susfs-v1.5.5
+        curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
         export ARCH=arm64
         export SUBARCH=ARM64
         export KBUILD_BUILD_USER="NVG-064"
